@@ -32,6 +32,7 @@ Events
   - the base branch moved and the new commits touch files in this PR
   - merge state became BEHIND or DIRTY
   - the PR merged or closed
+  - a draft PR went green and pr-wait marked it ready for review
 
 CodeRabbit is advisory: pr-wait reports it but never waits for it. Comment
 edits are never events, and top-level comments from CI and deploy bots
@@ -83,7 +84,7 @@ query($owner: String!, $name: String!, $number: Int!) {
   viewer { login }
   repository(owner: $owner, name: $name) {
     pullRequest(number: $number) {
-      url state headRefOid baseRefName mergeStateStatus
+      url state isDraft headRefOid baseRefName mergeStateStatus
       author { login }
       baseRef { target { oid } }
       comments(last: 100) { nodes { id url body author { login __typename } } }
@@ -385,6 +386,9 @@ class Watcher:
         stable = snapshot == self.prev_snapshot
         self.prev_snapshot = snapshot
         green = gate_done and stable and not fail_lines
+        if green and pr["isDraft"]:
+            gh(["pr", "ready", str(self.pr), "-R", self.repo])
+            self.emit(f"undraft:{head}", f"marked ready for review: checks green on {short}")
 
         # People and bots talking. Edits are never events.
         for comment in comments:
