@@ -26,6 +26,8 @@ branch conflicts.
   `watch_pull_request`. The parent owns the PR. Do not watch PRs you are not
   working on.
 - **A wake is news, not a merge decision.** Check the merge gate yourself.
+- **Undraft on green.** When the required checks pass on a draft PR, run
+  `gh pr ready <pr>`.
 - **Unwatch when you hand off.** A watched thread stays in Working and out of
   the user's inbox. When you stop (ready, blocked, or asking the user a question),
   call `unwatch_pull_request` first. A merge or close ends the watch on its
@@ -46,7 +48,8 @@ pr-wait <pr> [--repo owner/name] [--until ready|green|any-change]
 
 It prints one line per real event. It exits 0 when the `--until` condition is
 met or the PR merges, 1 when it needs you (a required check failed, conflicts,
-unresolved threads, PR closed), and 2 on bad input.
+unresolved threads, PR closed), and 2 on bad input. When a draft PR's checks
+go green, it marks the PR ready for review and prints a line saying so.
 
 - `ready` (default): required checks green, Greptile or Macroscope reviewed the
   head, and no unresolved threads. Use this to babysit.
