@@ -47,9 +47,10 @@ one appears.
    that could. If you are on the default branch, create a branch first.
 2. **Prove it.** Get proof for every change you made. See "Proof".
 3. **Get feedback.** Use the `sol-loop` skill to verify changes.
-4. **File the PR** with the `file-pr` skill. Rebase onto the latest default
-   branch first. Add one short line to the description that says how you proved
-   the change.
+4. **File or update the PR** with `gh`, checking for an existing PR first, and
+   keep the description short: lead with the problem, then the solution.
+   Rebase onto the latest default branch first. Add one short line to the
+   description that says how you proved the change.
 5. **Babysit the PR** with the `babysit-pr` skill. Fix real findings and CI
    failures. Get proof for each fix before you push it.
 6. **Merge** when the merge gate passes.
