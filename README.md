@@ -28,6 +28,18 @@ Some skills call others. Install the ones they need too:
 
 ```bash
 git clone https://github.com/jakubhomoly/jakstack
+jakstack/install.sh
+```
+
+`install.sh` symlinks each skill into `~/.claude/skills/` (Claude Code) and
+`~/.codex/skills/` (Codex), so edits to the clone show up in both. Keep the
+clone where it is: the links point into it. After `git pull`, run the script
+again to link new skills and remove links to deleted ones. It leaves your other
+skills alone and skips any real directory with the same name as a skill here.
+
+To copy instead of link:
+
+```bash
 cp -R jakstack/skills/* ~/.claude/skills/   # Claude Code
 cp -R jakstack/skills/* ~/.codex/skills/    # Codex
 ```
