@@ -1,9 +1,6 @@
-# tstack
+# jakstack
 
-The agent skills I use every day, cleaned up so anyone can use them. They work
-in Claude Code and Codex. Some use [T3 Code](https://github.com/pingdotgg/t3code)
-features when they are available and fall back to native tools when they are
-not.
+fork of [tstack](https://github.com/t3dotgg/tstack) adjusted for my needs. feel free to fork, contribute or just use the skills.
 
 ## Skills
 
