@@ -12,6 +12,7 @@ fork of [tstack](https://github.com/t3dotgg/tstack) adjusted for my needs. feel 
 | `takeover` | "take over" | Finishes someone else's PR, branch, or agent thread, and keeps their credit. |
 | `babysit-pr` | "babysit" | Watches a PR through CI and review bots, and fixes the real findings. |
 | `modernize` | "modernize" | Rebases an old PR and decides if it should still exist. |
+| `multiagent` | "multiagent" | Splits work across Claude and Codex agents running in parallel, and merges the results. |
 | `leaving-pr-comments` | (automatic) | Formats comments that an agent posts on your behalf. |
 
 Some skills call others. Install the ones they need too:

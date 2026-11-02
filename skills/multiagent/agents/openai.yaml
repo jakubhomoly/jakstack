@@ -1,0 +1,4 @@
+interface:
+  display_name: "Multiagent"
+  short_description: "Split work and run it in parallel across agents and models"
+  default_prompt: "Use $multiagent to split this into parallel agents and merge the results."
